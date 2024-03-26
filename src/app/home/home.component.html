@@ -1,9 +1,16 @@
-<mat-form-field class="player-form-field">
-    <mat-label>Bungie Name</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
-    @if (value) {
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-            <mat-icon>close</mat-icon>
-        </button>
-    }
-</mat-form-field>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Bungie Name</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+            [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            @for (option of options; track option) {
+            <mat-option [value]="option">{{option}}</mat-option>
+            }
+        </mat-autocomplete>
+
+    </mat-form-field>
+    <button mat-fab color="accent" aria-label="Example icon button with a search icon">
+        <mat-icon>search</mat-icon>
+    </button>
+</form>
